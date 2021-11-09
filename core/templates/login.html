@@ -1,0 +1,12 @@
+{% load rest_framework %}
+
+{% if request.user.is_authenticated %}
+    <h1>hello</h1><br><br><br>
+{% endif %}
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    {% render_form serializer %}
+{#    <input type="text" placeholder="username" id="username"><br><br>#}
+{#    <input type="password" placeholder="password" id="password"><br><br>#}
+    <button type="submit">send</button>
+</form>
