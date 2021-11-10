@@ -1,5 +1,5 @@
 {% load rest_framework %}
-
+<div align="center">
 {% if request.user.is_authenticated %}
     <h1>hello</h1><br><br><br>
 {% endif %}
@@ -8,5 +8,7 @@
     {% render_form serializer %}
 {#    <input type="text" placeholder="username" id="username"><br><br>#}
 {#    <input type="password" placeholder="password" id="password"><br><br>#}
-    <button type="submit">send</button>
+    <br><br>
+    <button type="submit">login</button>
 </form>
+</div>

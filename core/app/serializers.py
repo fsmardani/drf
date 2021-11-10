@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User
+from .models import User,Account
 
 from django.contrib.auth import authenticate
 from django.utils.translation import ugettext_lazy as _
@@ -8,7 +8,38 @@ from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
 
 
+class AccountSerializer(serializers.ModelSerializer):
 
+    class Meta:
+        model = Account
+        fields = '__all__'
+        lookup_field = 'pk'
+
+
+#     def validate(self, data):
+#
+#         # username = data.get('user')
+#         # has_permission_to = data.get('perm')
+#         print("000000",data)
+#         if data.username and data.has_permission_to:
+#             print('hi!')
+#             user = Account.objects.filter(user__username=data.username)[0]
+#             user.has_permission_to = data.has_permission_to
+#             user.save()
+#         else:
+#             msg = _('Must include "username" and "permission".')
+#             raise serializers.ValidationError(msg, code='humm')
+#
+#         data['user'] = user
+#         return data
+#
+# # def update(self, instance, validated_data):
+# #
+# #         instance.user.username = validated_data.get('user', instance.user.username)
+# #         instance.has_permission_to = validated_data.get('permission', instance.has_permission_to)
+# #         instance.save()
+# #
+#
 
 
 

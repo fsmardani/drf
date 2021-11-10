@@ -1,15 +1,16 @@
 {% load rest_framework %}
-
+<div align="center">
 {% if request.user.is_authenticated %}
     <h1>hello</h1><br><br><br>
 {% endif %}
 
-{% for user in users%}
-<form action="{% url 'permission' %}" method="post">
+    <form action="{% url 'permission' pk=profile.pk %}" method="POST">
     {% csrf_token %}
-        <h5>{{user.user.username}} </h5>
-        <input type="number" placeholder="permission_to" id="has_permission_to"><br><br>
-    <button type="submit">send</button>
-</form>
-{% endfor %}
+    {% render_form serializer %}
+    <input type="hidden" name="_method" value="PUT">
 
+    <input type="submit" value="Save">
+</form>
+
+
+</div>
